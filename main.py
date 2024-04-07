@@ -5,8 +5,8 @@ from tradingview_ta import TA_Handler, Interval, Exchange
 
 
 INTERVAL = Interval.INTERVAL_15_MINUTES
-TELEGRAM_TOKEN = '5589040240:AAHIgpie9Rz7Hxa7SPp-P6T3TwZp2tCMEjk'
-TELEGRAM_CHANNEL = '@teemsee'
+TELEGRAM_TOKEN = ''
+TELEGRAM_CHANNEL = ''
 
 client = UMFutures()
 
@@ -45,19 +45,19 @@ def first_data():
     for i in symbols:
         try:
             data = get_data(i)
-            print(data)
+            #print(data)
             if (data['RECOMMENDATION'] == 'STRONG_BUY'):
                 longs.append(data['SYMBOL'])
-                print(data['SYMBOL'], 'Buy')
+                #print(data['SYMBOL'], 'Buy')
             
             if (data['RECOMMENDATION'] == 'STRONG_SELL'):
                 shorts.append(data['SYMBOL'])
             time.sleep(0.01)
         except:
             pass
-    print('longs:')
+    print('На лонг:')
     print(longs)
-    print('shorts:')
+    print('На шорт:')
     print(shorts)
     return longs, shorts
 
@@ -70,7 +70,7 @@ while True:
     for i in symbols:
         try:
             data = get_data(i)
-            # print(data)
+            #print(data)
             if (data['RECOMMENDATION'] == 'STRONG_BUY' and (data['SUMBOL'] not in longs)):
                 print(data['SUMBOL'], 'Buy')
                 text = data['SUMBOL'] + 'Buy'
