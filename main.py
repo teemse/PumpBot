@@ -38,23 +38,24 @@ shorts= []
 
 def first_data():
     print('Поиск начальных данных')
+    print('\n'.join(symbols))
     send_massage('Поиск начальных данных')
     for i in symbols:
             try:
                 data = get_data(i)
-                #print(data)
+                print(data)
                 if (data['RECOMMENDATION'] == 'STRONG_BUY'):
                     longs.append(data['SYMBOL'])
-                    #print(data['SYMBOL'], 'Buy')
+                    print(data['SYMBOL'], 'Buy')
             
                 if (data['RECOMMENDATION'] == 'STRONG_SELL'):
                     shorts.append(data['SYMBOL'])
-                time.sleep(0.01)
+                    print(data['SYMBOL'], 'Sell')
             except:
                 pass
-    print('На лонг:')
+    print('Лонг:')
     print(longs)
-    print('На шорт:')
+    print('Шорт:')
     print(shorts)
     return longs, shorts
 
@@ -67,7 +68,7 @@ while True:
     for i in symbols:
         try:
             data = get_data(i)
-            #print(data)
+            print(data)
             if (data['RECOMMENDATION'] == 'STRONG_BUY' and (data['SUMBOL'] not in longs)):
                 print(data['SUMBOL'], 'Buy')
                 text = data['SUMBOL'] + 'BUY'
