@@ -37,20 +37,20 @@ longs = []
 shorts= []
 
 def first_data():
-    print('Поиск начальных данных')
+    print('Сбор начальных данных...')
     print('\n'.join(symbols))
-    send_massage('Поиск начальных данных')
+    send_massage('Сбор начальных данных...')
     for i in symbols:
             try:
                 data = get_data(i)
-                print(data)
+                # print(data)
                 if (data['RECOMMENDATION'] == 'STRONG_BUY'):
                     longs.append(data['SYMBOL'])
-                    print(data['SYMBOL'], 'Buy')
+                    # print(data['SYMBOL'], 'Buy')
             
                 if (data['RECOMMENDATION'] == 'STRONG_SELL'):
                     shorts.append(data['SYMBOL'])
-                    print(data['SYMBOL'], 'Sell')
+                    # print(data['SYMBOL'], 'Sell')
             except:
                 pass
     print('Лонг:')
@@ -59,29 +59,29 @@ def first_data():
     print(shorts)
     return longs, shorts
 
+first_data()
 print('Погнали')
 send_massage('Погнали')
-first_data()
 
 while True:
     print('_______________________Новый цикл______________________')
     for i in symbols:
         try:
             data = get_data(i)
-            print(data)
-            if (data['RECOMMENDATION'] == 'STRONG_BUY' and (data['SUMBOL'] not in longs)):
-                print(data['SUMBOL'], 'Buy')
-                text = data['SUMBOL'] + 'BUY'
+            # print(data)
+            if (data['RECOMMENDATION'] == 'STRONG_BUY' and (data['SYMBOL'] not in longs)):
+                print(data['SYMBOL'], 'Buy')
+                text = data['SYMBOL'] + 'BUY'
                 send_massage(text)
-                longs.append(data['SUMBOL'])
+                longs.append(data['SYMBOL'])
 
 
 
-            if (data['RECOMMENDATION'] == 'STRONG_SELL' and (data['SUMBOL'] not in shorts)):
-                print(data['SUMBOL'], 'Sell')
-                text = data['SUMBOL'] + 'SELL'
+            if (data['RECOMMENDATION'] == 'STRONG_SELL' and (data['SYMBOL'] not in shorts)):
+                print(data['SYMBOL'], 'Sell')
+                text = data['SYMBOL'] + 'SELL'
                 send_massage(text)
-                shorts.append(data['SUMBOL'])
+                shorts.append(data['SYMBOL'])
             time.sleep(0.1)
         except:
             pass
