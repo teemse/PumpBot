@@ -70,7 +70,7 @@ while True:
             data = get_data(i)
             # print(data)
             if (data['RECOMMENDATION'] == 'STRONG_BUY' and (data['SYMBOL'] not in longs)):
-                print(data['SYMBOL'], 'Buy')
+                print(data['SYMBOL'], 'Берем')
                 text = data['SYMBOL'] + 'BUY'
                 send_massage(text)
                 longs.append(data['SYMBOL'])
@@ -78,7 +78,7 @@ while True:
 
 
             if (data['RECOMMENDATION'] == 'STRONG_SELL' and (data['SYMBOL'] not in shorts)):
-                print(data['SYMBOL'], 'Sell')
+                print(data['SYMBOL'], 'Сливаем')
                 text = data['SYMBOL'] + 'SELL'
                 send_massage(text)
                 shorts.append(data['SYMBOL'])
