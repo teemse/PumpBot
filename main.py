@@ -135,8 +135,6 @@ async def basic(message: types.Message):
                     await message.answer(text)
                     longs.append(data['SYMBOL'])
 
-
-
                 if (data['RECOMMENDATION'] == 'STRONG_SELL' and (data['SYMBOL'] not in shorts)):
                     print(data['SYMBOL'], ' Продаем нахуй')
                     text = data['SYMBOL'] + ' Продаем нахуй'
