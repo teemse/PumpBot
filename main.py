@@ -6,10 +6,8 @@ from aiogram.filters.command import Command
 from config_reader import config
 from aiogram import F
 import time
-import requests
 from binance.um_futures import UMFutures
-from tradingview_ta import TA_Handler, Interval, Exchange
-
+from tradingview_ta import TA_Handler, Interval
 # Включаем логирование, чтобы не пропустить важные сообщения
 logging.basicConfig(level=logging.INFO)
 
@@ -33,7 +31,7 @@ INTER=[Interval.INTERVAL_1_MINUTE,
        Interval.INTERVAL_1_WEEK,
        Interval.INTERVAL_1_MONTH]
 
-INTERVAL = Interval.INTERVAL_15_MINUTES
+INTERVAL = Interval.INTERVAL_4_HOURS
 
 client = UMFutures()
 
